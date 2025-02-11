@@ -1,0 +1,19 @@
+.sent-resume {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  &__file {
+    margin-right: 20px;
+  }
+  &__info {
+    span {
+      font-size: 13px;
+    }
+    p {
+      font-size: 17px;
+    }
+  }
+  &__arrow {
+    margin-left: auto;
+  }
+}
