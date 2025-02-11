@@ -2,6 +2,8 @@
   padding: 0 12px;
   margin-top: 75px;
   &__date {
+    margin-top: 15px;
+    margin-bottom: 15px;
     text-align: center;
     span {
       background: #0000003d;
@@ -19,12 +21,31 @@
     background-color: #cce4ff;
     border-radius: 18px;
     margin-left: auto;
-    margin-top: 16px;
     h5 {
       font-size: 17px;
     }
     p {
       font-size: 17px;
+    }
+  }
+  &__message {
+    max-width: 327px;
+    margin-left: auto;
+    background: #ebedf0;
+    border-radius: 18px;
+    padding: 7px 12px;
+    &-name {
+      font-size: 13px;
+      color: #4986cc;
+    }
+    &-type,
+    &-text,
+    &-ps {
+      font-size: 17px;
+      line-height: 22px;
+    }
+    &-ps {
+      margin-top: 20px;
     }
   }
 }
