@@ -4,10 +4,15 @@
   align-items: center;
   min-height: 44px;
   background-color: #fff;
+  padding: 11px 14px;
+  border-bottom: 0.5px solid #e1e3e6;
   &__info {
     display: flex;
     &-description {
       margin-left: 10px;
+      span {
+        color: #818c99;
+      }
     }
   }
   &__controls {

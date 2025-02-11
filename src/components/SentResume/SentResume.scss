@@ -3,12 +3,14 @@
   align-items: center;
   min-height: 48px;
   background-color: #fff;
+  padding: 11px 14px;
   &__file {
     margin-right: 20px;
   }
   &__info {
     span {
       font-size: 13px;
+      color: #818c99;
     }
     p {
       font-size: 17px;
