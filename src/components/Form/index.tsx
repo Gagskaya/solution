@@ -4,16 +4,29 @@ import axios from "axios";
 import sendForm from "../../assets/icons/send.svg";
 
 import "./Form.scss";
+import { useAppDispatch } from "../../store";
+import { fetchMessages } from "../../store/actionCreators/messages";
 
 export const Form = () => {
+  const dispatch = useAppDispatch();
   const [messageText, setMessageText] = useState<string>("");
 
-  const onSendMessage = () => {
-    axios.post("http://localhost:3000/messages", {
+  const onSendMessage = async () => {
+    await axios.post("http://localhost:3000/messages", {
       text: messageText,
       isCoverLetter: false,
       type: "outgoing",
+      date: new Date(),
     });
+
+    setMessageText("");
+    dispatch(fetchMessages());
+  };
+
+  const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSendMessage();
+    }
   };
 
   return (
@@ -24,6 +37,7 @@ export const Form = () => {
         placeholder="Сообщение"
         value={messageText}
         onChange={(e) => setMessageText(e.target.value)}
+        onKeyDown={(e) => onKeyDown(e)}
       />
       <img
         src={sendForm}

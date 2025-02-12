@@ -1,34 +1,9 @@
 .messenger {
   padding: 0 12px;
-  margin-top: 75px;
+  padding-top: 75px;
   overflow-y: scroll;
-  &__date {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    text-align: center;
-    span {
-      background: #0000003d;
-      color: #fff;
-      border-radius: 8px;
-      padding: 4px 8px;
-      max-width: 67px;
-      white-space: nowrap;
-      font-size: 13px;
-    }
-  }
-  &__cover-letter {
-    max-width: 327px;
-    padding: 7px 12px;
-    background-color: #cce4ff;
-    border-radius: 18px;
-    margin-left: auto;
-    h5 {
-      font-size: 17px;
-    }
-    p {
-      font-size: 17px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
   &__message {
     &-date {
       margin-top: 15px;
@@ -46,13 +21,15 @@
     }
     &_outgoing {
       margin-bottom: 15px;
-
+      display: flex;
+      flex-direction: column;
       &-main {
+        display: inline-block;
         max-width: 327px;
         padding: 7px 12px;
         background-color: #cce4ff;
         border-radius: 18px;
-        margin-left: auto;
+        align-self: flex-end;
         h5 {
           font-size: 17px;
         }

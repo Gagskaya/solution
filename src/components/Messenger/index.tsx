@@ -1,28 +1,29 @@
 import avatar from "../../assets/icons/avatar.svg";
-import axios from "axios";
-
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { fetchMessages } from "../../store/actionCreators/messages";
+import { useAppDispatch } from "../../store";
+import { selectMessages } from "../../store/selectors/messages";
 import "./Messenger.scss";
-import { useEffect, useState } from "react";
-import { Message } from "../types/messages";
+import { format } from "date-fns";
 
 export const Messenger = () => {
-  const [messages, setMessages] = useState<Message[]>([]);
+  const dispatch = useAppDispatch();
+  const messages = useSelector(selectMessages);
 
   useEffect(() => {
     (async function () {
-      const { data } = await axios.get("http://localhost:3000/messages");
-
-      setMessages(data);
+      dispatch(fetchMessages());
     })();
-  }, [setMessages]);
+  }, [dispatch, fetchMessages]);
 
   return (
     <div className="messenger">
       {messages.map((item) =>
         item.type === "incoming" ? (
-          <div className="messenger__message_incoming">
+          <div className="messenger__message_incoming" key={item.id}>
             <div className="messenger__message-date">
-              <span>18 июля</span>
+              <span>{format(item.date, "dd MMMM")}</span>
             </div>
             <div className="messenger__message_incoming-wrap">
               <div className="messenger__message_incoming-avatar">
@@ -45,7 +46,7 @@ export const Messenger = () => {
         ) : (
           <div className="messenger__message_outgoing">
             <div className="messenger__message-date">
-              <span>18 июля</span>
+              <span>{format(item.date, "dd MMMM")}</span>
             </div>
             <div className="messenger__message_outgoing-main">
               {item.isCoverLetter ? <h5>Сопроводительное письмо</h5> : null}
