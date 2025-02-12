@@ -1,7 +1,7 @@
 {
   "name": "solution",
   "homepage": "https://gagskaya.github.io/solution/",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "type": "module",
   "scripts": {

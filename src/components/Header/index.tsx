@@ -13,7 +13,7 @@ export const Header = () => {
         <img src={avatar} alt="аватар" />
         <div className="header__info-description">
           <h4>ООО “ОМЕГА”</h4>
-          <span>Автомаляр, до 150 000 ₽ </span>
+          <span>Автомаляр, до 150 000 ₽</span>
         </div>
       </div>
       <div className="header__controls">
