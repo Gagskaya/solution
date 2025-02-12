@@ -1,37 +1,59 @@
-import avatar from "../../assets/avatar.svg";
+import avatar from "../../assets/icons/avatar.svg";
+import axios from "axios";
 
 import "./Messenger.scss";
+import { useEffect, useState } from "react";
+import { Message } from "../types/messages";
 
 export const Messenger = () => {
+  const [messages, setMessages] = useState<Message[]>([]);
+
+  useEffect(() => {
+    (async function () {
+      const { data } = await axios.get("http://localhost:3000/messages");
+
+      setMessages(data);
+    })();
+  }, [setMessages]);
+
   return (
     <div className="messenger">
-      <div className="messenger__date">
-        <span>18 июля</span>
-      </div>
-      <div className="messenger__cover-letter">
-        <h5>Сопроводительное письмо</h5>
-        <p>Меня зовут Сергей и я автомаляр с 4-летним опытом.</p>
-      </div>
-      <div className="messenger__date">
-        <span>20 июля</span>
-      </div>
-      <div className="messenger__message">
-        <div className="messenger__message-avatar">
-          <img src={avatar} alt="аватарка" />
-        </div>
-        <div className="messenger__message-main">
-          <span className="messenger__message-main-name">Ирина Корчагина</span>
-          <h4 className="messenger__message-main-type">Приглашение</h4>
-          <p className="messenger__message-main-text">
-            Добрый день, Сергей! Нас заинтересовал Ваш отклик. Свяжитесь с нами
-            по номеру +7 (999) 999-99-99 или оставьте свой номер и мы Вам
-            перезвоним.
-          </p>
-          <p className="messenger__message-main-ps">
-            С уважением, Ирина, специалист по привлечению персонала
-          </p>
-        </div>
-      </div>
+      {messages.map((item) =>
+        item.type === "incoming" ? (
+          <div className="messenger__message_incoming">
+            <div className="messenger__message-date">
+              <span>18 июля</span>
+            </div>
+            <div className="messenger__message_incoming-wrap">
+              <div className="messenger__message_incoming-avatar">
+                <img src={avatar} alt="аватарка" />
+              </div>
+              <div className="messenger__message_incoming-main">
+                <span className="messenger__message_incoming-main-name">
+                  {item.author}
+                </span>
+                <h4 className="messenger__message_incoming-main-type">
+                  {item.status === "invite" ? "Приглашение" : "Отказ"}
+                </h4>
+                <p className="messenger__message_incoming-main-text">
+                  {item.text}
+                </p>
+                <p className="messenger__message_incoming-main-ps">{item.ps}</p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="messenger__message_outgoing">
+            <div className="messenger__message-date">
+              <span>18 июля</span>
+            </div>
+            <div className="messenger__message_outgoing-main">
+              {item.isCoverLetter ? <h5>Сопроводительное письмо</h5> : null}
+              <p>{item.text}.</p>
+            </div>
+          </div>
+        )
+      )}
       <div className="messenger__answer">
         <p>Работодатель пригласил вас на собеседование. </p>
       </div>

@@ -1,9 +1,9 @@
-import "./Header.scss";
+import arrowLeft from "../../assets/icons/arrow-left.svg";
+import avatar from "../../assets/icons/avatar.svg";
+import dots from "../../assets/icons/dots.svg";
+import close from "../../assets/icons/close.svg";
 
-import arrowLeft from "../../assets/arrow-left.svg";
-import avatar from "../../assets/avatar.svg";
-import dots from "../../assets/dots.svg";
-import close from "../../assets/close.svg";
+import "./Header.scss";
 
 export const Header = () => {
   return (

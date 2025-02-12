@@ -1,5 +1,5 @@
-import file from "../../assets/file.svg";
-import arrowRight from "../../assets/arrow-right.svg";
+import file from "../../assets/icons/file.svg";
+import arrowRight from "../../assets/icons/arrow-right.svg";
 
 import "./SentResume.scss";
 
