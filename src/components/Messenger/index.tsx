@@ -1,11 +1,14 @@
-import avatar from "../../assets/icons/avatar.svg";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { format } from "date-fns";
+
 import { fetchMessages } from "../../store/actionCreators/messages";
 import { useAppDispatch } from "../../store";
 import { selectMessages } from "../../store/selectors/messages";
+
+import avatar from "../../assets/icons/avatar.svg";
+
 import "./Messenger.scss";
-import { format } from "date-fns";
 
 export const Messenger = () => {
   const dispatch = useAppDispatch();

@@ -1,25 +1,17 @@
 import { useState } from "react";
-import axios from "axios";
+import { useAppDispatch } from "../../store";
+
+import { addMessage } from "../../store/reducers/messages";
 
 import sendForm from "../../assets/icons/send.svg";
 
 import "./Form.scss";
-import { useAppDispatch } from "../../store";
-import { fetchMessages } from "../../store/actionCreators/messages";
-import { addMessage } from "../../store/reducers/messages";
 
 export const Form = () => {
   const dispatch = useAppDispatch();
   const [messageText, setMessageText] = useState<string>("");
 
   const onSendMessage = async () => {
-    // await axios.post("http://localhost:3000/messages", {
-    //   text: messageText,
-    //   isCoverLetter: false,
-    //   type: "outgoing",
-    //   date: new Date(),
-    // });
-
     setMessageText("");
     dispatch(
       addMessage({

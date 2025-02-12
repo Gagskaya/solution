@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { Message } from "../../components/types/messages";
 
 interface messagesState {
@@ -16,7 +17,7 @@ export const messagesSlice = createSlice({
     setMessages(state, action: PayloadAction<Message[]>) {
       state.messages = action.payload;
     },
-    addMessage(state, action: PayloadAction<Message[]>) {
+    addMessage(state, action: PayloadAction<Message>) {
       const newMessages: any = [...state.messages, action.payload];
       state.messages = newMessages;
     },
