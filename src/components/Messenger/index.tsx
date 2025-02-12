@@ -1,3 +1,5 @@
+import avatar from "../../assets/avatar.svg";
+
 import "./Messenger.scss";
 
 export const Messenger = () => {
@@ -14,16 +16,21 @@ export const Messenger = () => {
         <span>20 июля</span>
       </div>
       <div className="messenger__message">
-        <span className="messenger__message-name">Ирина Корчагина</span>
-        <h4 className="messenger__message-type">Приглашение</h4>
-        <p className="messenger__message-text">
-          Добрый день, Сергей! Нас заинтересовал Ваш отклик. Свяжитесь с нами
-          по номеру +7 (999) 999-99-99 или оставьте свой номер и мы Вам
-          перезвоним.
-        </p>
-        <p className="messenger__message-ps">
-          С уважением, Ирина, специалист по привлечению персонала
-        </p>
+        <div className="messenger__message-avatar">
+          <img src={avatar} alt="аватарка" />
+        </div>
+        <div className="messenger__message-main">
+          <span className="messenger__message-main-name">Ирина Корчагина</span>
+          <h4 className="messenger__message-main-type">Приглашение</h4>
+          <p className="messenger__message-main-text">
+            Добрый день, Сергей! Нас заинтересовал Ваш отклик. Свяжитесь с нами
+            по номеру +7 (999) 999-99-99 или оставьте свой номер и мы Вам
+            перезвоним.
+          </p>
+          <p className="messenger__message-main-ps">
+            С уважением, Ирина, специалист по привлечению персонала
+          </p>
+        </div>
       </div>
       <div className="messenger__answer">
         <p>Работодатель пригласил вас на собеседование. </p>
