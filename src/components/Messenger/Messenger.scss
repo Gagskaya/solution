@@ -1,6 +1,7 @@
 .messenger {
   padding: 0 12px;
   margin-top: 75px;
+  overflow-y: scroll;
   &__date {
     margin-top: 15px;
     margin-bottom: 15px;
@@ -46,6 +47,15 @@
     }
     &-ps {
       margin-top: 20px;
+    }
+  }
+  &__answer {
+    margin-top: 12px;
+    margin-bottom: 15px;
+    text-align: center;
+    p {
+      color: #6d7885;
+      font-size: 15px;
     }
   }
 }
