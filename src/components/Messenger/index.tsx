@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { format } from "date-fns";
 
@@ -12,13 +12,24 @@ import "./Messenger.scss";
 
 export const Messenger = () => {
   const dispatch = useAppDispatch();
+
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
   const messages = useSelector(selectMessages);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
     (async function () {
       dispatch(fetchMessages());
     })();
   }, [dispatch, fetchMessages]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
     <div className="messenger">
@@ -61,6 +72,7 @@ export const Messenger = () => {
       <div className="messenger__answer">
         <p>Работодатель пригласил вас на собеседование. </p>
       </div>
+      <div ref={messagesEndRef} />
     </div>
   );
 };
