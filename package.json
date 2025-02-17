@@ -9,13 +9,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "vk-miniapps-deploy",
     "tunnel": "vk-tunnel --insecure=1 --http-protocol=http --ws-protocol=ws --host=192.168.0.215 --port=5173"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.1",
     "@vkontakte/vk-bridge": "^2.15.4",
+    "@vkontakte/vk-miniapps-deploy": "^0.1.9",
     "@vkontakte/vk-tunnel": "^0.2.4",
     "axios": "^1.7.9",
     "concurrently": "^9.1.2",
